@@ -1,3 +1,5 @@
+// Tom's new method that did not work for me AT FIRST. Also see layout.tsx in app,
+// and see implementation of light-dark-toggle.tsx in layout.tsx in (logged-out)
 "use client";
 
 import { MoonIcon, SunIcon } from "lucide-react";
@@ -24,8 +26,8 @@ export function LightDarkToggle({ className }: { className?: string }) {
           }}
         >
           <Button variant="outline">
-            <SunIcon className="block dark:hidden" />
-            <MoonIcon className="hidden dark:block" />
+            <SunIcon className="hidden dark:block" />
+            <MoonIcon className="block dark:hidden" />
           </Button>
         </TooltipTrigger>
         <TooltipContent>
@@ -36,3 +38,42 @@ export function LightDarkToggle({ className }: { className?: string }) {
     </TooltipProvider>
   );
 }
+
+// Previous version that did work too.
+// "use client";
+
+// import { useState } from "react";
+// import {
+//   Tooltip,
+//   TooltipContent,
+//   TooltipProvider,
+//   TooltipTrigger,
+// } from "./tooltip";
+// import { MoonIcon, SunIcon } from "lucide-react";
+
+// type Props = {
+//   className?: string;
+// };
+
+// export function LightDarkToggle({ className }: Props) {
+//   const [isDarkMode, setIsDarkMode] = useState(true);
+
+//   return (
+//     <TooltipProvider>
+//       <Tooltip>
+//         <TooltipTrigger
+//           className={className}
+//           onClick={() => {
+//             setIsDarkMode((prevValue) => !prevValue);
+//             document.body.classList.toggle("dark");
+//           }}
+//         >
+//           {isDarkMode ? <SunIcon /> : <MoonIcon />}
+//         </TooltipTrigger>
+//         <TooltipContent>
+//           {isDarkMode ? "Enable Light Mode" : "Enable Dark Mode"}
+//         </TooltipContent>
+//       </Tooltip>
+//     </TooltipProvider>
+//   );
+// }
